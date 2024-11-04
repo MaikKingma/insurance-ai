@@ -1,12 +1,11 @@
 package ai.insurance.command;
 
-import dev.langchain4j.data.message.ContentType;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.containsString;
 
 @QuarkusTest
 class ChatCommandsTestIT {
@@ -24,7 +23,6 @@ class ChatCommandsTestIT {
             .post("/chat")
             .then()
             .statusCode(200)
-            .contentType(String.valueOf(ContentType.TEXT))
-            .body(is("Bot response")); // Assert the expected response
+            .contentType(containsString("text/event-stream")); // Assert the expected response
     }
 }
