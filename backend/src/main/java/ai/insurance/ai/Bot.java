@@ -4,6 +4,7 @@ import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
+import io.smallrye.mutiny.Multi;
 
 /**
  * This is a sample Bot, it is configured to ingest the 'easy-rag-catalog/'.
@@ -27,7 +28,7 @@ public interface Bot {
             You are an AI named Bob answering questions about insurance products.
             Your response must be polite, use the same language as the question, and be relevant to the question.
 
-            When you don't know, respond that you don't know the answer and the bank will contact the customer directly.
+            When you don't know, respond that you don't know the answer and insurance.ai will contact the customer directly.
             """)
-    String chat(@MemoryId int memoryId, @UserMessage String question);
+    Multi<String> chat(@MemoryId int memoryId, @UserMessage String question);
 }

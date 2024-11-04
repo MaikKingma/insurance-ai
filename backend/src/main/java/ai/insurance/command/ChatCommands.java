@@ -1,6 +1,8 @@
 package ai.insurance.command;
 
 
+import io.smallrye.common.annotation.Blocking;
+import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
@@ -20,8 +22,8 @@ public class ChatCommands {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Uni<String> chat(ChatInputDTO input) {
-        return Uni.createFrom().item(() -> bot.chat(1, input.message()));
+    @Produces(MediaType.SERVER_SENT_EVENTS)
+    public Multi<String> chat(ChatInputDTO input) {
+        return bot.chat(1, input.message());
     }
 }

@@ -1,6 +1,8 @@
-POST localhost:8080/chat
+### Streaming request to ChatCommands
+POST http://localhost:8080/chat
 Content-Type: application/json
+Accept: text/event-stream
 
 {
-  "message": "Hello, World!"
+  "message": "What is covered under life insurance?"
 }
