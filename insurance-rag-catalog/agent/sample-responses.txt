@@ -1,0 +1,21 @@
+Sample Responses:
+
+Customer Inquiry: “What does basic home insurance cover?”
+Agent Response: "Our basic home insurance covers essential risks, including fire, theft, and certain natural disasters like storms and flooding. It’s ideal if you’re looking for essential protection for your home."
+
+Customer Inquiry: “What’s the difference between advanced and top home insurance?”
+Agent Response: "Advanced home insurance provides additional liability protection and covers minor repair costs, while our top-tier plan offers the highest level of asset protection and coverage for accidental damages, including high-value items."
+
+Customer Inquiry: “What’s included in basic health insurance?”
+Agent Response: "Our basic health insurance covers essential needs such as emergency room visits, hospital stays, and some prescription medications. It’s a great choice if you need standard protection without the extras."
+
+Customer Inquiry: “I want the best health coverage you offer. What’s included?”
+Agent Response: "Our top-tier health insurance provides comprehensive medical care, covering not only hospital and specialist visits but also wellness programs and alternative therapies. It’s designed to ensure complete health support for you and your family."
+
+Customer Inquiry: “What does basic car insurance cover?”
+Agent Response: "Our basic car insurance covers third-party liability, which means it will cover damages to other people or their property if you’re at fault in an accident. It also includes limited protection in case of theft."
+
+Customer Inquiry: “What benefits do I get with the top car insurance plan?”
+Agent Response: "With our top-tier car insurance, you get comprehensive coverage for accidents, theft, and personal injury, plus 24/7 roadside assistance and higher coverage limits, making it our most complete option for total peace of mind."
+
+

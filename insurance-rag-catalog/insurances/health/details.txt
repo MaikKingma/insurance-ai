@@ -1,0 +1,8 @@
+Health Insurance
+Coverage Levels:
+
+- Basic Coverage: Essential medical services like emergency room visits, hospitalization, and limited prescription coverage.
+- Advanced Coverage: Expanded hospital care, specialist consultations, and additional prescription coverage.
+- Top Coverage: Full-spectrum health services, including extensive specialist care, alternative treatments, and wellness programs.
+
+

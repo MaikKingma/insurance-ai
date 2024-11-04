@@ -1,5 +1,6 @@
-package me.maikkingma;
+package ai.insurance.ai;
 
+import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
@@ -23,10 +24,10 @@ import io.quarkiverse.langchain4j.RegisterAiService;
 public interface Bot {
 
     @SystemMessage("""
-            You are an AI named Bob answering questions about financial products.
+            You are an AI named Bob answering questions about insurance products.
             Your response must be polite, use the same language as the question, and be relevant to the question.
 
             When you don't know, respond that you don't know the answer and the bank will contact the customer directly.
             """)
-    String chat(@UserMessage String question);
+    String chat(@MemoryId int memoryId, @UserMessage String question);
 }
