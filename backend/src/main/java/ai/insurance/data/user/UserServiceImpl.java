@@ -2,8 +2,11 @@ package ai.insurance.data.user;
 
 import ai.insurance.domain.user.User;
 import ai.insurance.domain.user.UserService;
+import io.quarkus.hibernate.reactive.panache.common.WithTransaction;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
+
+import java.util.List;
 
 @ApplicationScoped
 public class UserServiceImpl implements UserService {
@@ -15,7 +18,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Uni<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Uni<List<User>> getAllUsers() {
+        return userRepository.listAll();
+    }
+
+    @Override
+    @WithTransaction
+    public Uni<User> createUser(User user) {
+        return userRepository.persist(user);
     }
 }

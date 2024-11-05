@@ -1,6 +1,5 @@
 package ai.insurance.domain.user;
 
-import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,10 +8,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "user")
+@Getter
+@Setter
+@Table(name = "users")
 public class User extends PanacheEntityBase {
+
+    public static User create(String username, String firstName, String lastName) {
+        User user = new User();
+        user.username = username;
+        user.firstName = firstName;
+        user.lastName = lastName;
+
+        return user;
+    }
 
     @Id
     @SequenceGenerator(
@@ -21,14 +33,14 @@ public class User extends PanacheEntityBase {
         allocationSize = 1
     )
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSeq")
-    public Long id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
-    public String username;
+    private String username;
 
     @Column(name = "first_name", nullable = false)
-    public String firstName;
+    private String firstName;
 
     @Column(name = "last_name", nullable = false)
-    public String lastName;
+    private String lastName;
 }
