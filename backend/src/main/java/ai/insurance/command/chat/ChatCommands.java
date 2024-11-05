@@ -1,4 +1,4 @@
-package ai.insurance.command;
+package ai.insurance.command.chat;
 
 
 import io.smallrye.mutiny.Multi;
