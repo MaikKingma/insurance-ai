@@ -1,7 +1,5 @@
 <script lang="ts">
-    import LightSwitch from "$lib/components/shared/lightSwitch/LightSwitch.svelte";
     import {Button} from "$lib/components/ui/button";
-    import UserSelect from "../features/users/UserSelect.svelte";
 
     const API_ENDPOINT = "http://localhost:8080";
     let output = $state("")
