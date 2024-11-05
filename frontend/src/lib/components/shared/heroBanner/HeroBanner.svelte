@@ -17,12 +17,18 @@ import {Button} from "$lib/components/ui/button";
         100% {filter: sepia(0.5) brightness(0.5) hue-rotate(360deg)}
     }
 
+    @keyframes zoom {
+        0% { transform: scale(1) rotate(0deg) translate(0, 0); }
+        100% { transform: scale(2) rotate(10deg) translate(-6%, 15%); }
+    }
+
     .hero-foreground {
         background-image: url("/home-foreground-couple.png");
         background-size: cover;
+        animation: zoom 120s infinite ease-in-out alternate;
     }
     .hero-background {
-        background-image: url("/home-background-couple.png");
+        background-image: url("/home-background-couch.png");
         background-size: cover;
         animation: rainbowlogo 10s infinite;
     }
@@ -31,7 +37,7 @@ import {Button} from "$lib/components/ui/button";
     }
 </style>
 
-<section class="one-third grid justify-items-center content-center p-4 relative">
+<section class="one-third grid justify-items-center content-center p-4 relative overflow-hidden">
     <div class="w-full h-full absolute hero-background" ></div>
     <div class="w-full h-full absolute hero-foreground" ></div>
     <div class=" absolute flex w-full h-full justify-items-center p-16">
