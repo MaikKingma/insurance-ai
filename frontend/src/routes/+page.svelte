@@ -1,7 +1,5 @@
 <script lang="ts">
-    import LightSwitch from "$lib/components/shared/lightSwitch/LightSwitch.svelte";
     import {Button} from "$lib/components/ui/button";
-    import UserSelect from "../features/users/UserSelect.svelte";
 
     const API_ENDPOINT = "http://localhost:8080";
     let output = $state("")
@@ -33,8 +31,17 @@
 
 <section class="grid justify-items-center content-center h-dvh p-4">
     <div>
-        <h1>press the button</h1>
-        <Button onclick={() => chat()}>click me</Button>
+        <h2 class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+            Insurance Perfectly Tailored for You
+        </h2>
+        <p class="scroll-m-20 text-xl font-semibold tracking-tight">
+            Find the best policy according to your profile and preferences, powered by AI.
+        </p>
+        <div class="relative">
+            <img class="absolute grayscale" src="/home-background-couple.png" />
+            <img class="absolute" src="/home-foreground-couple.png" />
+        </div>
+        <Button onclick={() => chat()}>Get Started</Button>
         {#if isLoading}
             <div> loading...</div>
         {/if}
