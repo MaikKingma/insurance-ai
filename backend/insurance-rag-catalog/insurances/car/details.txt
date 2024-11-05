@@ -1,7 +1,7 @@
 Car Insurance
 Coverage Levels:
 
-- Basic Coverage: Covers third-party liability, some collision, and theft. Essential protection for others and basic support in accidents.
-- Advanced Coverage: Adds comprehensive protection for the vehicle, including more extensive collision and roadside assistance.
-- Top Coverage: Includes complete collision, theft, comprehensive support, personal injury protection, and extended roadside services.
+- Basic Coverage: Covers third-party liability, some collision, and theft. Essential protection for others and basic support in accidents. insurance costs 50 dollar per month
+- Advanced Coverage: Adds comprehensive protection for the vehicle, including more extensive collision and roadside assistance. insurance costs 70 dollar per month
+- Top Coverage: Includes complete collision, theft, comprehensive support, personal injury protection, and extended roadside services. insurance costs 100 dollar per month
 
