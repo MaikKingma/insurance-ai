@@ -5,8 +5,8 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <!-- Include each changeset file here -->
     <include file="/db/changelog/changesets/00001_create_user_sequence.xml"/>
     <include file="/db/changelog/changesets/00002_create_users.xml"/>
+    <include file="/db/changelog/changesets/00003_create_products.xml"/>
 
 </databaseChangeLog>
