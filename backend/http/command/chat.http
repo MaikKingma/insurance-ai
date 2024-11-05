@@ -4,5 +4,5 @@ Content-Type: application/json
 Accept: text/event-stream
 
 {
-  "message": "What is covered under life insurance?"
+  "message": "Is flood damage covered by basic home insurance?"
 }
