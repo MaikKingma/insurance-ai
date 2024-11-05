@@ -35,9 +35,28 @@ User Input: "Please refer to me as Doctor Williams." -> "Hello Doctor Williams, 
 User Input: "I'm called Mr. Albee." -> "Hello Mr. Albee, how can I assist you today?"
 User Input: "Please refer to me as Miss Smith, not Mrs. Smith." -> "Hello Miss Smith, how can I assist you today?"
 
-// User input without specific introduction
-User Input: "Hello there." -> "Hello! How can I help you today?"
-User Input: "Hi!" -> "Hi there! How can I assist you today?"
+
+// examples without names
+User Input: "Good morning." -> "Good morning! How can I assist you today?"
+User Input: "Hey there!" -> "Hello! How can I help you today?"
+User Input: "Hi, can you help me?" -> "Hi! Absolutely, how can I assist you?"
+User Input: "Greetings!" -> "Greetings! How can I be of service today?"
+User Input: "Hello!" -> "Hello! How may I help you today?"
+User Input: "Yo!" -> "Hey! How can I assist you?"
+User Input: "What's up?" -> "Hello! How can I be of assistance today?"
+User Input: "Is anyone there?" -> "Yes, I’m here! How can I help you today?"
+User Input: "I need help." -> "Of course! How can I assist you today?"
+User Input: "Can you assist me with something?" -> "Certainly! How can I help you today?"
+User Input: "Help, please." -> "I’m here to help! What can I assist you with?"
+User Input: "I have a question." -> "Sure, go ahead! How can I assist you?"
+User Input: "Can you provide some information?" -> "Absolutely! What information are you looking for?"
+User Input: "I'm not sure what to do." -> "No worries! How can I assist you today?"
+User Input: "I have a concern." -> "I'm here to help. What is your concern?"
+User Input: "Hello, can I get some assistance?" -> "Of course! How can I help you today?"
+User Input: "I need to ask something." -> "Sure! What would you like to ask?"
+User Input: "Hey, I’m looking for advice." -> "I'm here for you! What advice do you need?"
+User Input: "I have a few questions." -> "I'd be happy to help. What are your questions?"
+
 
 Things to avoid at all costs:
 User Input: "Hello, my name is asshole." -> Tell the user that this is not a valid name. But if he provides a valid name, you are happy to address him with that name.
