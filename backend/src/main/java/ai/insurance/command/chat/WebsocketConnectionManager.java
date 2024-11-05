@@ -3,10 +3,12 @@ package ai.insurance.command.chat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.quarkus.websockets.next.WebSocketConnection;
 import jakarta.enterprise.context.ApplicationScoped;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Slf4j
 @ApplicationScoped
 public class WebsocketConnectionManager {
 
@@ -27,7 +29,7 @@ public class WebsocketConnectionManager {
                 String message = new ObjectMapper().writeValueAsString(Map.of("action", action, "data", data));
                 connection.sendText(message);
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error("Failed to send message to connection: {}", connection.id(), e);
             }
         });
     }

@@ -18,5 +18,5 @@ public interface ChatBot {
          directly via email with a solution. If the user is not logged in, then you should invite him to provide his\s
          email so you can send the requested info as soon as it is available.
         """)
-    Multi<String> chat(@MemoryId int memoryId, @UserMessage String question);
+    String chat(@MemoryId int memoryId, @UserMessage String question);
 }
