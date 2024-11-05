@@ -41,6 +41,6 @@ public class ChatWebSocket {
         log.info("WebSocket in progress: {}", connection.id());
         String userId = connection.pathParam("userId");
 
-        return chatBot.chat(Integer.parseInt(userId), "test");
+        return chatBot.chat(Long.parseLong(userId), message);
     }
 }
