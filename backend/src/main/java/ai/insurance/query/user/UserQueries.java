@@ -27,6 +27,13 @@ public class UserQueries implements ai.insurance.query.user.api.UserQueriesApi {
             );
     }
 
+    @Override
+    @WithSession
+    public Uni<UserView> getUserById(Long id) {
+        return userService.getById(id)
+            .map(this::createUserViewFromUser);
+    }
+
     private UserView createUserViewFromUser(User user) {
         UserView userView = new UserView();
         userView.setId(user.getId());
@@ -37,8 +44,5 @@ public class UserQueries implements ai.insurance.query.user.api.UserQueriesApi {
         return userView;
     }
 
-    @Override
-    public Uni<UserView> getUserById(Integer id) {
-        return null;
-    }
+
 }

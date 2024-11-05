@@ -26,4 +26,9 @@ public class UserServiceImpl implements UserService {
     public Uni<User> createUser(User user) {
         return userRepository.persist(user);
     }
+
+    @Override
+    public Uni<User> getById(Long id) {
+        return userRepository.findById(id);
+    }
 }
