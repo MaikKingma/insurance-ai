@@ -21,6 +21,10 @@ paths:
       responses:
         "201":
           description: User successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserView'
         "400":
           description: Bad request
         "409":
@@ -91,6 +95,7 @@ components:
         id:
           type: integer
           description: Unique identifier for the user
+          format: int64
           example: 1
         username:
           type: string

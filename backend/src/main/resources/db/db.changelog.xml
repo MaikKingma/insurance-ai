@@ -7,6 +7,6 @@
 
     <!-- Include each changeset file here -->
     <include file="/db/changelog/changesets/00001_create_user_sequence.xml"/>
-    <include file="/db/changelog/changesets/00002_create_user.xml"/>
+    <include file="/db/changelog/changesets/00002_create_users.xml"/>
 
 </databaseChangeLog>

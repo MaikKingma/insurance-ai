@@ -6,7 +6,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="1" author="Maik Kingma">
-        <createTable tableName="user">
+        <createTable tableName="users">
             <column name="id" type="BIGINT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -23,7 +23,7 @@
 
         <!-- Set the 'id' column to use the 'user_id_seq' sequence for automatic values -->
         <addAutoIncrement
-            tableName="user"
+            tableName="users"
             columnName="id"
             columnDataType="BIGINT"
             startWith="1"
