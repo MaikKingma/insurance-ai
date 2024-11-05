@@ -4,5 +4,5 @@ Content-Type: application/json
 {
   "firstName": "John",
   "lastName": "Doe",
-  "username": "john.doe2@test.test"
+  "username": "john.doe3@test.test"
 }

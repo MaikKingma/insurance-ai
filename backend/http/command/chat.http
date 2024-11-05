@@ -1,8 +1,19 @@
-### Streaming request to ChatCommands
-POST http://localhost:8080/chat
-Content-Type: application/json
-Accept: text/event-stream
+### Simple WebSocket Request
+// It is possible to send messages to server right from the Services tool window
+WEBSOCKET ws://localhost:8080/chat/1
+### Request with client messages
+// It is possible to specify client messages in request body. Use '===' to separate messages.
+// Add '=== wait-for-server' above a message to send it after a server response is received.
+// To wait for N responses, add '=== wait-for-server' N times.
+WEBSOCKET ws://localhost:8080/chat/1
+Content-Type: application/json // We use it for highlighting
 
+===
 {
-  "message": "What is covered under a new car insurance? first confirm to me the type of insurance I am asking about"
+  "message": "Hello, server!"
 }
+=== wait-for-server
+{
+  "message": "I would lik you to Tell me about Health insurance"
+}
+=== wait-for-server
