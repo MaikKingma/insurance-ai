@@ -8,8 +8,8 @@
 
 <ModeWatcher />
 <header class="w-full px-4 py-2 border-b flex items-center justify-between">
-    <h1>
-        INSURANCE.AI
+    <h1 class="scroll-m-20 text-2xl font-semibold tracking-tight">
+        <a href="/">INSURANCE.AI</a>
     </h1>
     <div class="flex gap-2">
         <UserSelect />
