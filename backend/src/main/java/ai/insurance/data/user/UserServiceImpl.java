@@ -23,7 +23,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @WithTransaction
     public Uni<User> createUser(User user) {
         return userRepository.persist(user);
     }

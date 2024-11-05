@@ -3,6 +3,7 @@ package ai.insurance.query.user;
 import ai.insurance.domain.user.User;
 import ai.insurance.domain.user.UserService;
 import ai.insurance.query.user.model.UserView;
+import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import io.smallrye.mutiny.Uni;
 
 
@@ -17,6 +18,7 @@ public class UserQueries implements ai.insurance.query.user.api.UserQueriesApi {
     }
 
     @Override
+    @WithSession
     public Uni<List<UserView>> getAllUsers() {
         return userService.getAllUsers()
             .onItem().transform(users -> users.stream()
