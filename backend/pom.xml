@@ -165,6 +165,9 @@
                 <version>${compiler-plugin.version}</version>
                 <configuration>
                     <parameters>true</parameters>
+<!--                    <source>${maven.compiler.source}</source>-->
+<!--                    <target>${maven.compiler.target}</target>-->
+<!--                    <generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -217,6 +220,7 @@
                             <generateModelTests>false</generateModelTests>
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <globalProperties>
                                 <models>UserSignUpPayload</models>
                                 <apis>UserCommands</apis>
@@ -239,6 +243,7 @@
                             <generateModelTests>false</generateModelTests>
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <globalProperties>
                                 <models>UserView</models>
                                 <apis>UserQueries</apis>
@@ -248,27 +253,18 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>copy-filtered-generated-sources</id>
-                        <phase>process-resources</phase>
+                        <phase>generate-sources</phase>
                         <goals>
-                            <goal>copy-resources</goal>
+                            <goal>add-source</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}/generated-sources/openapi/src/gen/java</directory>
-                                    <excludes>
-                                        <exclude>**/RestApplication.java</exclude>
-                                        <exclude>**/RestResourceRoot.java</exclude>
-                                    </excludes>
-                                </resource>
-                            </resources>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/openapi/src/gen/java</source>
+                            </sources>
                         </configuration>
                     </execution>
                 </executions>

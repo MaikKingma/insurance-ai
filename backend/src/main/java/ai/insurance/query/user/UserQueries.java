@@ -4,6 +4,7 @@ import ai.insurance.domain.user.UserService;
 import ai.insurance.query.user.model.UserView;
 import io.smallrye.mutiny.Uni;
 
+
 import java.util.List;
 
 public class UserQueries implements ai.insurance.query.user.api.UserQueriesApi {
@@ -15,12 +16,12 @@ public class UserQueries implements ai.insurance.query.user.api.UserQueriesApi {
     }
 
     @Override
-    public Uni<List<UserView>> usersGet() {
+    public Uni<List<UserView>> getAllUsers() {
         return null;
     }
 
     @Override
-    public Uni<UserView> usersIdGet(Integer id) {
+    public Uni<UserView> getUserById(Integer id) {
         return null;
     }
 }
