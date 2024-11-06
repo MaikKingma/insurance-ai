@@ -1,6 +1,7 @@
 package ai.insurance.domaininteraction.product;
 
 import ai.insurance.command.chat.MessageSender;
+import ai.insurance.domain.product.PaymentCycle;
 import ai.insurance.domain.product.Product;
 import dev.langchain4j.agent.tool.Tool;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -26,9 +27,9 @@ public class InsuranceSelectionService {
     public String getInsuranceList() {
         log.info("Calling getInsuranceList()");
         List<Product> products = new ArrayList<>();
-        productService.getAllProducts().subscribe().with(product -> {
-
-        });
-        return "";
+        productService.getAllProducts().subscribe().with(products::addAll);
+        return products.stream()
+                .map(Product::toJson)
+                .collect(Collectors.joining("\n"));
     }
 }

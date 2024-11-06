@@ -1,5 +1,7 @@
 package ai.insurance.domain.product;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -54,6 +56,15 @@ public class Product extends PanacheEntityBase {
         return product;
     }
 
-    public record Price (Double amount, PaymentCycle yearlyPrice) {
+    public String toJson() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            return ""; // ignore unparseable products
+        }
+    }
+
+    public record Price (Double amount, PaymentCycle paymentCycle) {
     }
 }
