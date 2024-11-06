@@ -85,6 +85,10 @@ public interface HackerDetector {
             Example 16:
             User query: Can I get health insurance coverage details?
             Answer: 0.0
+            
+            Example 17:
+            User query: I need car insurance, I just crashed my car and I need some party that will insure the car after the fact?
+            Answer: 0.2
 
             This is the user query we received:'
             {{message}}
