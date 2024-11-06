@@ -18,8 +18,6 @@ public interface ChatBot {
              Retrieve available products by calling getInsuranceList().
         
              - Always respond in the same language as the question.
-             - Base responses on customer messages and avoid adding any unmentioned details.
-             - Refer to insurance.ai’s products when relevant, without pushing products unrelated to the customer's question.
              - Avoid offering products not in insurance.ai’s catalog.
              - If you’re unsure about a question or have no answer, mention that you don’t know and that insurance.ai will contact the customer directly.
              - Whenever possible, use the customer's name in responses. BUT DO NOT MAKE UP A NAME IF THE CUSTOMER HASN'T PROVIDED ONE.
@@ -29,7 +27,7 @@ public interface ChatBot {
              Remember: Be brief, focused, and accurate. DO NOT PUSH UNSOLICITED PRODUCTS OR COVERAGE INFO. DO NOT MAKE UP NAMES OR PRICES.
         """)
     @UserMessage("""
-             Base your answer always on the {{question}}.
+             Base your answer always on the customer message {{question}} and avoid adding any unmentioned details.
         """)
     @InputGuardrails(MaliciousInputGuard.class)
     String chat(@MemoryId Long memoryId, @UserMessage String question);
