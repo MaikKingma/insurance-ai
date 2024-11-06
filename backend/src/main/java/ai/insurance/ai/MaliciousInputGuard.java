@@ -14,7 +14,7 @@ public class MaliciousInputGuard implements InputGuardrail {
 
     @Override
     public InputGuardrailResult validate(UserMessage userMessage) {
-        if(hackerDetector.isHacker(userMessage.singleText()) >= 0.3) {
+        if(hackerDetector.isHacker(userMessage.singleText()) >= 0.4) {
             return fatal("Hacking attempt detected!");
         }
 
