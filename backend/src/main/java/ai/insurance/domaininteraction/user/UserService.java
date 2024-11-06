@@ -1,8 +1,8 @@
-package ai.insurance.domain.user;
+package ai.insurance.domaininteraction.user;
 
+import ai.insurance.domain.user.User;
 import io.smallrye.mutiny.Uni;
 
-import java.nio.channels.FileChannel;
 import java.util.List;
 
 public interface UserService {
