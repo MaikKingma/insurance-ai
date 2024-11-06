@@ -168,7 +168,7 @@ components:
               type: number
               description: The amount of the price
               example: 100.00
-            paymentCyle:
+            paymentCycle:
               type: string
               description: The payment cycle of the price
               example: "MONTHLY"

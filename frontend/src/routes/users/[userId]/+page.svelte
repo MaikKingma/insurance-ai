@@ -102,6 +102,8 @@
         </div>
     </div>
 
+    {#if messages.length > 2}
     <ProductBasket></ProductBasket>
+        {/if}
 </div>
 

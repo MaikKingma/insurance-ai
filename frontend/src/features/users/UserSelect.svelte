@@ -1,6 +1,6 @@
 <script lang="ts">
     import {goto, onNavigate} from "$app/navigation";
-    import {UserQueriesApi, type UserView} from "$lib/api";
+    import { UserQueriesApi, type UserView} from "$lib/api";
     import * as Select from "$lib/components/ui/select";
     import {apiConfig} from "$lib/utils";
 
