@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "users")
-public class User extends PanacheEntityBase {
+public class User {
 
     public static User create(String username, String firstName, String lastName) {
         User user = new User();

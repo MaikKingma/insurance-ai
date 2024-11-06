@@ -1,6 +1,7 @@
 package ai.insurance.query.product;
 
 import ai.insurance.domain.product.Product;
+import ai.insurance.domaininteraction.product.ProductJDBCService;
 import ai.insurance.domaininteraction.product.ProductService;
 import ai.insurance.query.product.api.ProductQueriesApi;
 import ai.insurance.query.product.model.PriceView;
@@ -13,9 +14,11 @@ import java.util.stream.Collectors;
 public class ProductQueries implements ProductQueriesApi {
 
     private final ProductService productService;
+    private final ProductJDBCService productJDBCService;
 
-    public ProductQueries(ProductService productService) {
+    public ProductQueries(ProductService productService, ProductJDBCService productJDBCService) {
         this.productService = productService;
+        this.productJDBCService = productJDBCService;
     }
 
     @Override
@@ -24,6 +27,10 @@ public class ProductQueries implements ProductQueriesApi {
             .map(this::createProductViewFromProduct) // map User to UserView
             .toList()
         );
+//        return Uni.createFrom().item(productJDBCService.getAllProducts().stream()
+//            .map(this::createProductViewFromProduct)
+//            .toList()
+//        );
     }
 
     @Override

@@ -22,7 +22,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Table(name = "products")
-public class Product extends PanacheEntityBase {
+public class Product{
 
     @Id
     private UUID id;
