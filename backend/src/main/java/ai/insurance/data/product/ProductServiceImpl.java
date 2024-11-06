@@ -6,6 +6,8 @@ import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 @ApplicationScoped
 public class ProductServiceImpl implements ProductService {
@@ -18,5 +20,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Uni<List<Product>> getAllProducts() {
         return productRepository.listAll();
+    }
+
+    @Override
+    public Uni<List<Product>> findProductsByIds(Set<UUID> insuranceIds) {
+        return productRepository.findProductsByIds(insuranceIds);
     }
 }

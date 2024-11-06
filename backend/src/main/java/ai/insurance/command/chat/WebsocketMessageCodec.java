@@ -30,7 +30,7 @@ public class WebsocketMessageCodec implements TextMessageCodec<WebsocketMessage>
             JsonNode jsonMessage = objectMapper.readTree(message);
             // Extract action and data from the JSON
             WebSocketTopic topic = WebSocketTopic.fromString(jsonMessage.get("topic").asText());
-            Long userId = jsonMessage.get("userid").asLong();
+            Long userId = jsonMessage.get("userId").asLong();
 
             return new WebsocketMessage(topic, userId, jsonMessage.get("message").asText());
         } catch (JsonProcessingException e) {
