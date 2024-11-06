@@ -1,5 +1,6 @@
 <script lang="ts" module>
     import type {Snippet} from "svelte";
+    import { fly } from 'svelte/transition';
     import LineMdEmojiGrinFilled from '~icons/line-md/emoji-grin-filled';
     export type ChatBubbleProps = {
         variant: "bot" | "human",
@@ -28,7 +29,7 @@
 </script>
 
 
-<div class="flex items-start {alignment} gap-2.5">
+<div in:fly={{ y: 100 }} class="flex items-start {alignment} gap-2.5">
     <LineMdEmojiGrinFilled/>
     <div class="flex flex-col w-full max-w-[320px] leading-1.5 p-4 {variantStyle}">
         <div class="flex items-center space-x-2 rtl:space-x-reverse">
