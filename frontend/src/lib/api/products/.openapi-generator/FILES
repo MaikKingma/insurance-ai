@@ -1,0 +1,8 @@
+.openapi-generator-ignore
+apis/ProductQueriesApi.ts
+apis/index.ts
+index.ts
+models/PriceView.ts
+models/ProductView.ts
+models/index.ts
+runtime.ts

@@ -1,4 +1,4 @@
-import { UserQueriesApi } from '$lib/api';
+import { UserQueriesApi } from '$lib/api/user';
 import { apiConfig } from '$lib/utils';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
