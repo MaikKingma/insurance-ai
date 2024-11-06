@@ -1,4 +1,4 @@
 /* tslint:disable */
 /* eslint-disable */
-export * from './UserSignUpPayload';
-export * from './UserView';
+export * from './PriceView';
+export * from './ProductView';

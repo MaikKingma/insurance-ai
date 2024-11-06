@@ -5,7 +5,7 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params }) => {
 	const userApi = new UserQueriesApi(apiConfig);
-	return await userApi.getUserById({ id: Number(params.userId) }).catch((err) => {
+	return await userApi.getUserById({ id: Number(params.userId) }).catch(() => {
 		error(404, 'Not found');
 	});
 };

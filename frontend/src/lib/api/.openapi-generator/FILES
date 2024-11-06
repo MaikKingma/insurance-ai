@@ -1,9 +1,8 @@
 .openapi-generator-ignore
-apis/UserCommandsApi.ts
-apis/UserQueriesApi.ts
+apis/ProductQueriesApi.ts
 apis/index.ts
 index.ts
-models/UserSignUpPayload.ts
-models/UserView.ts
+models/PriceView.ts
+models/ProductView.ts
 models/index.ts
 runtime.ts

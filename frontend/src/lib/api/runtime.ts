@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * User Management API
- * API for user management and chat service
+ * Product Management API
+ * API for product management
  *
  * The version of the OpenAPI document: 1.0.0
  * 

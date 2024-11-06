@@ -1,7 +1,13 @@
 <script lang="ts">
+    import {ProductQueriesApi, type ProductView} from "$lib/api";
+    import {apiConfig} from "$lib/utils";
     import ProductBasketItem from "./ProductBasketItem.svelte";
     import IconParkSolidShoppingBag from '~icons/icon-park-solid/shopping-bag';
-    let productsInBasket = $state(["product 1"]);
+    let productsInBasket = $state<ProductView[]>([]);
+    const productApi = new ProductQueriesApi(apiConfig)
+    productApi.getAllProducts().then(products => {
+        productsInBasket = products
+    })
 </script>
 
 <div class="p-4 border border-gray-800 rounded-xl w-full">
