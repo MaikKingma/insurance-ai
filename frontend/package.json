@@ -12,7 +12,10 @@
 		"lint": "prettier --check . && eslint ."
 	},
 	"devDependencies": {
+		"@iconify-json/bxs": "^1.2.1",
+		"@iconify-json/icon-park-solid": "^1.2.1",
 		"@iconify-json/line-md": "^1.2.2",
+		"@iconify-json/svg-spinners": "^1.2.1",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",

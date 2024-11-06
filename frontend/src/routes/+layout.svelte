@@ -8,6 +8,8 @@
 </script>
 
 <ModeWatcher />
+<div class="min-h-dvh flex flex-col">
+
 <header class="w-full px-4 py-2 border-b flex items-center justify-between">
     <h1 class="scroll-m-20 text-2xl font-semibold tracking-tight align-bottom">
         <a href="/"><LineMdCloudAltPrintFilledLoop class="inline-block -translate-y-1 pr-1" /> INSURANCE.AI</a>
@@ -17,6 +19,7 @@
         <LightSwitch />
     </div>
 </header>
-<main>
+<main class="flex-auto">
 {@render children?.()}
 </main>
+</div>
