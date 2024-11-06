@@ -27,7 +27,7 @@ public class InsuranceSelectionService {
     }
 
     @Tool
-    public String getInsuranceList() throws Throwable {
+    public String getInsuranceList() {
         log.info("Calling getInsuranceList()");
         List<Product> products = productService.getAllProducts();
         return products.stream().map(Product::toJson).collect(Collectors.joining(","));

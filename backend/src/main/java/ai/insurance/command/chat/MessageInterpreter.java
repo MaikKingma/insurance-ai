@@ -20,9 +20,12 @@ public class MessageInterpreter {
 
     public void interpretMessage(WebsocketMessage message, WebSocketConnection connection) {
         if(message.getTopic() == WebSocketTopic.CHAT) {
-            String response = chatBot.chat(message.getUserId(), message.getMessage());
-
-            messageSender.sendChatMessageToUI(response, connection);
+            try {
+                String response = chatBot.chat(message.getUserId(), message.getMessage());
+                messageSender.sendChatMessageToUI(response, connection);
+            } catch (Exception e) {
+                log.error("Error processing chat message", e);
+            }
         }
     }
 }

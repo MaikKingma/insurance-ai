@@ -9,22 +9,22 @@
             <column name="id" type="UUID">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="VARCHAR(255)">
+            <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="default_description" type="VARCHAR(255)">
+            <column name="default_description" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="coverage_description" type="VARCHAR(255)">
+            <column name="coverage_description" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="prices" type="JSON">
                 <constraints nullable="false"/>
             </column>
-            <column name="category" type="number">
+            <column name="category" type="smallint">
                 <constraints nullable="false"/>
             </column>
-            <column name="coverage_category" type="number">
+            <column name="coverage_category" type="smallint">
                 <constraints nullable="false"/>
             </column>
         </createTable>
