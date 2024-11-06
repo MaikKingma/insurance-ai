@@ -10,10 +10,19 @@
     let { data }: { data: PageData } = $props();
 
     let chatbot: WebSocket;
+    let chatbox: Element;
     let currentMessage = $state("")
     let messages = $state<{actor: "bot" | "human", message: string}[]>([]);
     let isActive = $state(false)
     let isThinking = $state(false);
+
+
+    $effect(() => {
+        if(messages.length > 0) {
+
+        chatbox?.scrollTo({top: chatbox.scrollHeight, behavior: 'smooth' })
+        }
+    })
 
     onMount(() => {
         // Initialize the WebSocket connection
@@ -68,8 +77,8 @@
 </script>
 
 <div class="p-8 h-full">
-<h1>Hello {data.firstName} {data.lastName}</h1>
-<div class="bg-gray-800 flex flex-col gap-4 w-full max-w-xl rounded-s p-4 h-full rounded-2xl">
+<h1 class="text-xl pb-4">Hello {data.firstName} {data.lastName}</h1>
+<div bind:this={chatbox} class="bg-gray-800 flex flex-col gap-4 w-full max-w-xl rounded-s p-4 h-full rounded-2xl overflow-auto max-h-[600px]">
     {#each messages as message}
         <ChatBubble
             variant={message.actor}
