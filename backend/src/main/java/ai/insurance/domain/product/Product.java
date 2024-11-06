@@ -36,17 +36,15 @@ public class Product extends PanacheEntityBase {
     @Column(name = "coverage_description", nullable = false)
     private String coverageDescription;
 
-//    @Column(name = "prices", nullable = false)
-//    @JdbcTypeCode(SqlTypes.JSON)
-//    private Set<Price> prices = new HashSet<>();
+    @Column(name = "prices", nullable = false)
+    @JdbcTypeCode(SqlTypes.JSON)
+    private Set<Price> prices = new HashSet<>();
 
-//    @Column(name = "category", nullable = false)
-//    @Enumerated(EnumType.STRING)
-//    private InsuranceCategory category;
-//
-//    @Column(name = "coverage_category", nullable = false)
-//    @Enumerated(EnumType.STRING)
-//    private CoverageCategory coverageCategory;
+    @Column(name = "category", nullable = false)
+    private InsuranceCategory category;
+
+    @Column(name = "coverage_category", nullable = false)
+    private CoverageCategory coverageCategory;
 
     public static Product create(String name, String defaultDescription, String coverageDescription, Double monthlyPrice, Double yearlyPrice, InsuranceCategory category) {
         Product product = new Product();
@@ -54,8 +52,8 @@ public class Product extends PanacheEntityBase {
         product.name = name;
         product.defaultDescription = defaultDescription;
         product.coverageDescription = coverageDescription;
-//        product.prices = Set.of(new Price(monthlyPrice, PaymentCycle.MONTHLY), new Price(yearlyPrice, PaymentCycle.YEARLY));
-//        product.category = category;
+        product.prices = Set.of(new Price(monthlyPrice, PaymentCycle.MONTHLY), new Price(yearlyPrice, PaymentCycle.YEARLY));
+        product.category = category;
 
         return product;
     }

@@ -21,10 +21,10 @@
             <column name="prices" type="JSON">
                 <constraints nullable="false"/>
             </column>
-            <column name="category" type="VARCHAR(255)">
+            <column name="category" type="number">
                 <constraints nullable="false"/>
             </column>
-            <column name="coverage_category" type="VARCHAR(255)">
+            <column name="coverage_category" type="number">
                 <constraints nullable="false"/>
             </column>
         </createTable>
