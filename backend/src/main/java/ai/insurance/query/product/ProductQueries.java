@@ -9,37 +9,32 @@ import ai.insurance.query.product.model.ProductView;
 import io.smallrye.mutiny.Uni;
 
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class ProductQueries implements ProductQueriesApi {
 
     private final ProductService productService;
-    private final ProductJDBCService productJDBCService;
 
-    public ProductQueries(ProductService productService, ProductJDBCService productJDBCService) {
+    public ProductQueries(ProductService productService) {
         this.productService = productService;
-        this.productJDBCService = productJDBCService;
     }
 
     @Override
-    public Uni<List<ProductView>> getAllProducts() {
-        return productService.getAllProducts().onItem().transform(products -> products.stream()
+    public List<ProductView> getAllProducts() {
+        return productService.getAllProducts().stream()
             .map(this::createProductViewFromProduct) // map User to UserView
-            .toList()
-        );
-//        return Uni.createFrom().item(productJDBCService.getAllProducts().stream()
-//            .map(this::createProductViewFromProduct)
-//            .toList()
-//        );
+            .toList();
     }
 
     @Override
-    public Uni<List<ProductView>> getProductsByIds(List<String> id) {
-        return productService.findProductsByIds(id.stream().map(java.util.UUID::fromString).collect(Collectors.toSet()))
-            .onItem().transform(products -> products.stream()
+    public List<ProductView> getProductsByIds(List<String> id) {
+        Set<UUID> insuranceIds = id.stream().map(UUID::fromString).collect(Collectors.toSet());
+
+        return productService.findProductsByIds(insuranceIds).stream()
                 .map(this::createProductViewFromProduct)
-                .toList()
-        );
+                .toList();
     }
 
     private ProductView createProductViewFromProduct(Product product) {

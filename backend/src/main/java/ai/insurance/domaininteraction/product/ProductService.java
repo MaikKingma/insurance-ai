@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 public interface ProductService {
-    Uni<List<Product>> getAllProducts();
+    List<Product> getAllProducts();
 
-    Uni<List<Product>> findProductsByIds(Set<UUID> insuranceIds);
+    List<Product> findProductsByIds(Set<UUID> insuranceIds);
 }

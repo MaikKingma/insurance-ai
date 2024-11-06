@@ -3,9 +3,6 @@ package ai.insurance.query.user;
 import ai.insurance.domain.user.User;
 import ai.insurance.domaininteraction.user.UserService;
 import ai.insurance.query.user.model.UserView;
-import io.quarkus.hibernate.reactive.panache.common.WithSession;
-import io.smallrye.mutiny.Uni;
-
 
 import java.util.List;
 
@@ -18,18 +15,15 @@ public class UserQueries implements ai.insurance.query.user.api.UserQueriesApi {
     }
 
     @Override
-    public Uni<List<UserView>> getAllUsers() {
-        return userService.getAllUsers()
-            .onItem().transform(users -> users.stream()
+    public List<UserView> getAllUsers() {
+        return userService.getAllUsers().stream()
                 .map(this::createUserViewFromUser) // map User to UserView
-                .toList()
-            );
+                .toList();
     }
 
     @Override
-    public Uni<UserView> getUserById(Long id) {
-        return userService.getById(id)
-            .map(this::createUserViewFromUser);
+    public UserView getUserById(Long id) {
+        return createUserViewFromUser(userService.getById(id));
     }
 
     private UserView createUserViewFromUser(User user) {

@@ -55,10 +55,6 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-hibernate-reactive-panache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-orm-panache</artifactId>
         </dependency>
         <dependency>
@@ -158,9 +154,9 @@
                             <library>quarkus</library>
                             <useMicroProfileOpenAPIAnnotations>false</useMicroProfileOpenAPIAnnotations>
                             <useSwaggerAnnotations>false</useSwaggerAnnotations>
-                            <supportAsync>true</supportAsync>
+                            <supportAsync>false</supportAsync>
                             <useJakartaEe>true</useJakartaEe>
-                            <useMutiny>true</useMutiny>
+                            <useMutiny>false</useMutiny>
                             <openApiNullable>false</openApiNullable>
                             <interfaceOnly>true</interfaceOnly>
                             <skipDefaultInterface>true</skipDefaultInterface>
@@ -264,7 +260,7 @@
                             <generateModelDocumentation>false</generateModelDocumentation>
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <globalProperties>
-                                <models>UserSignUpPayload,UserView</models>
+                                <models>UserSignUpPayload</models>
                                 <apis>UserCommands</apis>
                             </globalProperties>
                         </configuration>
