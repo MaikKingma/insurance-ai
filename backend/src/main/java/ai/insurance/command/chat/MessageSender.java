@@ -18,7 +18,7 @@ public class MessageSender {
     public void sendChatMessageToUI(String message, Long userId, WebSocketConnection connection) {
         try {
             WebsocketMessage websocketMessage = new WebsocketMessage(WebSocketTopic.CHAT, userId, message);
-            connection.broadcast().sendTextAndAwait(websocketMessage.toJson());
+            connection.sendTextAndAwait(websocketMessage.toJson());
         } catch (Exception e) {
             log.error("Failed to send message to connection: {}", connection.id(), e);
         }
