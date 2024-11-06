@@ -5,6 +5,7 @@
     import {onMount} from "svelte";
     import type { PageData } from './$types';
     import LineMdLoadingAltLoop from '~icons/line-md/loading-alt-loop';
+    import LineMdChevronRightCircle from '~icons/line-md/chevron-right-circle';
 
     let { data }: { data: PageData } = $props();
 
@@ -16,7 +17,7 @@
 
     onMount(() => {
         // Initialize the WebSocket connection
-        chatbot = new WebSocket(`ws://localhost:8080/chat/${data.id}`); // Change URL as needed
+        chatbot = new WebSocket(`ws://localhost:8080/websocket/${data.id}`); // Change URL as needed
 
         // Handle WebSocket open event
         chatbot.onopen = () => {
@@ -25,9 +26,11 @@
 
         // Handle incoming messages
         chatbot.onmessage = (event) => {
-            const message = event.data;
-            isThinking = false;
-            messages.push({actor: 'bot', message});
+            const data = JSON.parse(event.data);
+            if(data.topic === "CHAT") {
+                isThinking = false;
+                messages.push({actor: 'bot', message: data.message});
+            }
         };
 
         // Handle WebSocket close event
@@ -43,12 +46,23 @@
     })
 
     // Send a message through the WebSocket
-    function sendMessage(message:string) {
-        if (chatbot && chatbot.readyState === WebSocket.OPEN && message.trim()) {
-            messages.push({actor: "human", message});
+    function sendMessage() {
+        if (chatbot && chatbot.readyState === WebSocket.OPEN && currentMessage.trim()) {
+            messages.push({actor: "human", message: currentMessage});
+            chatbot.send(JSON.stringify({
+                topic: "CHAT",
+                userid: data.id,
+                message: currentMessage,
+            }));
             isThinking = true;
             currentMessage = '';
-            chatbot.send(JSON.stringify({ message }));
+        }
+    }
+
+    function handleEnter(e:KeyboardEvent) {
+        if(e.key === "Enter") {
+            e.preventDefault()
+            sendMessage();
         }
     }
 </script>
@@ -56,9 +70,6 @@
 <div class="p-8 h-full">
 <h1>Hello {data.firstName} {data.lastName}</h1>
 <div class="bg-gray-800 flex flex-col gap-4 w-full max-w-xl rounded-s p-4 h-full rounded-2xl">
-    <ChatBubble variant="bot" actorName="chatbot">
-        Hi {data.firstName}, ask me anything
-    </ChatBubble>
     {#each messages as message}
         <ChatBubble
             variant={message.actor}
@@ -70,8 +81,10 @@
     {#if isThinking}
         <LineMdLoadingAltLoop />
     {/if}
-    <Textarea bind:value={currentMessage} placeholder="Type your message here." />
-    <Button onclick={()=> {sendMessage(currentMessage)}}>send message</Button>
+    <div class="flex gap-2">
+    <Textarea class="flex-auto border border-white" bind:value={currentMessage} onkeydown={handleEnter} placeholder="Type your message here." />
+    <Button class="h-auto bg-blue-600 text-white hover:text-blue-600 text-2xl" onclick={sendMessage}><LineMdChevronRightCircle style="width: 1.5rem; height: 1.5rem" /></Button>
+    </div>
 </div>
 </div>
 
