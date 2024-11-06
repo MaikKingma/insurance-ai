@@ -5,7 +5,6 @@ import ai.insurance.command.user.model.UserSignUpPayload;
 import ai.insurance.command.user.model.UserView;
 import ai.insurance.domain.user.User;
 import ai.insurance.domaininteraction.user.UserService;
-import io.quarkus.hibernate.reactive.panache.common.WithTransaction;
 import io.smallrye.mutiny.Uni;
 
 public class UserCommands implements UserCommandsApi {
@@ -16,7 +15,6 @@ public class UserCommands implements UserCommandsApi {
     }
 
     @Override
-    @WithTransaction
     public Uni<UserView> signUpUser(UserSignUpPayload userSignUpPayload) {
         return userService.createUser(User.create(
             userSignUpPayload.getUsername(),

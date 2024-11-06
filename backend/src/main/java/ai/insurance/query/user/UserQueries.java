@@ -18,7 +18,6 @@ public class UserQueries implements ai.insurance.query.user.api.UserQueriesApi {
     }
 
     @Override
-    @WithSession
     public Uni<List<UserView>> getAllUsers() {
         return userService.getAllUsers()
             .onItem().transform(users -> users.stream()
@@ -28,7 +27,6 @@ public class UserQueries implements ai.insurance.query.user.api.UserQueriesApi {
     }
 
     @Override
-    @WithSession
     public Uni<UserView> getUserById(Long id) {
         return userService.getById(id)
             .map(this::createUserViewFromUser);

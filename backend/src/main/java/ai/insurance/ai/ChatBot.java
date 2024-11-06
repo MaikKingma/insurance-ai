@@ -39,6 +39,6 @@ public interface ChatBot {
             Use neutral language and avoid jargon that is not widely known
 
         """)
-    @InputGuardrails(MaliciousInputGuard.class)
+    //@InputGuardrails(MaliciousInputGuard.class)
     String chat(@MemoryId Long memoryId, @UserMessage String question);
 }
