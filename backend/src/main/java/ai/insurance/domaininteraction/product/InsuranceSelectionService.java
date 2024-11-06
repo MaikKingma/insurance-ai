@@ -3,6 +3,8 @@ package ai.insurance.domaininteraction.product;
 import ai.insurance.command.chat.MessageSender;
 import ai.insurance.domain.product.PaymentCycle;
 import ai.insurance.domain.product.Product;
+import ai.insurance.query.product.model.PriceView;
+import ai.insurance.query.product.model.ProductView;
 import dev.langchain4j.agent.tool.Tool;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +31,8 @@ public class InsuranceSelectionService {
     @Tool
     public String getInsuranceList() {
         log.info("Calling getInsuranceList()");
-        List<Product> products = new ArrayList<>();
-        productService.getAllProducts().subscribe().with(products::addAll);
+        List<Product> products = productService.getAllProducts()
+            .await().indefinitely();
         return products.stream()
                 .map(Product::toJson)
                 .collect(Collectors.joining("\n"));
@@ -45,6 +47,24 @@ public class InsuranceSelectionService {
                 .collect(Collectors.toSet());
         List<Product> chosenProducts = new ArrayList<>();
         productService.findProductsByIds(insuranceIds).subscribe().with(chosenProducts::addAll);
+        messageSender.sendInsuranceSelectionToUI(chosenProducts.stream().map(this::createProductViewFromProduct).toList());
 
+    }
+
+    private ProductView createProductViewFromProduct(Product product) {
+        ProductView productView = new ProductView();
+        productView.setId(product.getId().toString());
+        productView.setName(product.getName());
+        productView.setDescription(product.getDefaultDescription());
+        productView.setCoverageDescription(product.getCoverageDescription());
+        productView.setCategory(product.getCategory().name());
+        productView.setCoverageCategory(product.getCoverageCategory().name());
+        productView.setPrice(product.getPrices().stream().map(price -> {
+            PriceView priceView = new PriceView();
+            priceView.setAmount(price.amount());
+            priceView.setPaymentCycle(price.paymentCycle().name());
+            return priceView;
+        }).toList());
+        return productView;
     }
 }

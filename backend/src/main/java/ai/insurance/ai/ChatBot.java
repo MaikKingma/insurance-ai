@@ -5,13 +5,26 @@ import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
-import io.quarkiverse.langchain4j.guardrails.InputGuardrails;
-import jakarta.inject.Singleton;
+import jakarta.enterprise.context.ApplicationScoped;
 
-@Singleton
+@ApplicationScoped
 @RegisterAiService(tools = InsuranceSelectionService.class)
 public interface ChatBot {
 
+
+    //    @UserMessage("""
+//             Base your answer always on the customer message {{question}} and avoid adding any unmentioned details.
+//             In the first 3 messages, use the client's name.
+//            Always respond in the same language as the question.
+//            Maintain a polite and professional tone in all communications.
+//            Base your answers solely on the customer's messages and the information from the database. Do not add details that have not been mentioned.
+//            If you cannot answer a question or do not know the answer, honestly admit that you do not know and inform the customer that insurance.ai will contact them directly.
+//            At the end of the conversation, thank the customer for their time and offer assistance in the future.
+//            Answer each question separately to provide clarity.
+//            Use neutral language and avoid jargon that is not widely known
+//
+//        """)
+    //@InputGuardrails(MaliciousInputGuard.class)
     @SystemMessage("""
              You are Indy, a helpful chatbot for insurance.ai, here to assist customers with insurance-related questions.
              Keep responses polite, concise, and directly relevant to each question.
@@ -27,18 +40,5 @@ public interface ChatBot {
         
              Remember: Be brief, focused, and accurate. DO NOT PUSH UNSOLICITED PRODUCTS OR COVERAGE INFO. DO NOT MAKE UP NAMES OR PRICES.
         """)
-    @UserMessage("""
-             Base your answer always on the customer message {{question}} and avoid adding any unmentioned details.
-             In the first 3 messages, use the client's name.
-            Always respond in the same language as the question.
-            Maintain a polite and professional tone in all communications.
-            Base your answers solely on the customer's messages and the information from the database. Do not add details that have not been mentioned.
-            If you cannot answer a question or do not know the answer, honestly admit that you do not know and inform the customer that insurance.ai will contact them directly.
-            At the end of the conversation, thank the customer for their time and offer assistance in the future.
-            Answer each question separately to provide clarity.
-            Use neutral language and avoid jargon that is not widely known
-
-        """)
-    //@InputGuardrails(MaliciousInputGuard.class)
     String chat(@MemoryId Long memoryId, @UserMessage String question);
 }

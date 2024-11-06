@@ -26,6 +26,15 @@ public class ProductQueries implements ProductQueriesApi {
         );
     }
 
+    @Override
+    public Uni<List<ProductView>> getProductsByIds(List<String> id) {
+        return productService.findProductsByIds(id.stream().map(java.util.UUID::fromString).collect(Collectors.toSet()))
+            .onItem().transform(products -> products.stream()
+                .map(this::createProductViewFromProduct)
+                .toList()
+        );
+    }
+
     private ProductView createProductViewFromProduct(Product product) {
         ProductView productView = new ProductView();
         productView.setId(product.getId().toString());

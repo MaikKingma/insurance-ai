@@ -21,6 +21,32 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ProductView'
+  /products/findByIds:
+    get:
+      summary: Get products by ids
+      tags:
+        - ProductQueries
+      operationId: getProductsByIds
+      description: Retrieves a list of products by ids.
+      parameters:
+        - name: id
+          in: query
+          description: The ids of the products
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductView'
+
 
 components:
   schemas:
