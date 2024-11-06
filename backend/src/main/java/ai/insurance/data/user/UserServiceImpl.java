@@ -1,8 +1,7 @@
 package ai.insurance.data.user;
 
 import ai.insurance.domain.user.User;
-import ai.insurance.domain.user.UserService;
-import io.quarkus.hibernate.reactive.panache.common.WithTransaction;
+import ai.insurance.domaininteraction.user.UserService;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 

@@ -15,22 +15,10 @@ public class WebsocketConnectionManager {
     private final Map<String, WebSocketConnection> connections = new ConcurrentHashMap<>();
 
     public void addConnection(WebSocketConnection connection) {
-        connections.put(connection.id(), connection);
+        connections.put(connection.pathParam("userId"), connection);
     }
 
     public void removeConnection(String connectionId) {
         connections.remove(connectionId);
-    }
-
-    public void broadcastMessage(String action, Object data) {
-        connections.values().forEach(connection -> {
-            try {
-                // Serialize the message to JSON and send it
-                String message = new ObjectMapper().writeValueAsString(Map.of("action", action, "data", data));
-                connection.sendText(message);
-            } catch (Exception e) {
-                log.error("Failed to send message to connection: {}", connection.id(), e);
-            }
-        });
     }
 }
