@@ -1,5 +1,7 @@
 package ai.insurance.command.chat;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +16,12 @@ public class WebsocketMessage {
     private String message;
 
     public String toJson() {
-        return "{\"topic\":\"" + topic + "\",\"userid\":" + userId + ",\"message\":\"" + message + "\"}";
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            // Handle exception or log it
+            return "{}";  // Return empty JSON object in case of error
+        }
     }
 }
