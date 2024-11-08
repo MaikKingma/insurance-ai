@@ -11,6 +11,8 @@ import CreateAccount from "../../features/users/CreateAccount.svelte";
 </style>
 
 <section class="signup-grid p-8">
-    <CreateAccount />
+    <form method="POST">
+        <CreateAccount />
+    </form>
     <img src="/signupnaw.png" alt="A.I. wants you to sign up" />
 </section>
